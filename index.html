@@ -7,7 +7,7 @@
     </head>
     <body id="body">
         <div>
-             <img id="alpaca-image" src="./images/alpaca.gif" width="300" height="300"/>
+             <img id="alpaca-image" src="./images/alpacaPNG.gif"/>
         </div>
     </body>
 
@@ -18,7 +18,7 @@
            
             const interval = setInterval(function() {
                 changeGif() ; 
-            }, 5000);
+            }, 3000);
             
         } ;
 
@@ -26,7 +26,6 @@
         {
 
             let randonNumber = generateRandomNumber() ; 
-            alert(randonNumber) ;
 
             if ( randonNumber == 1 )
             {
@@ -35,12 +34,12 @@
 
             else if ( randonNumber == 2 )
             {
-                document.getElementById('alpaca-image').src="./images/alpaca_left.gif";
+                document.getElementById('alpaca-image').src="./images/alpacaPNG.gif";
             }
 
             else 
             {
-                document.getElementById('alpaca-image').src="./images/alpaca_right.gif";
+                document.getElementById('alpaca-image').src="./images/alpaca_left.gif";
             }
 
         }
@@ -55,6 +54,7 @@
             return rand;
         }
 
+        document.getElementById('alpaca-image').src="./images/alpacaPNG.gif";
         waitTime() ; 
 
     </script>
