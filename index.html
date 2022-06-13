@@ -7,7 +7,56 @@
     </head>
     <body id="body">
         <div>
-             <img id="alpaca-image" src="./images/alpaca.png" width="300" height="300"/>
+             <img id="alpaca-image" src="./images/alpaca.gif" width="300" height="300"/>
         </div>
     </body>
+
+    <script>
+
+        function waitTime()
+        {
+           
+            const interval = setInterval(function() {
+                changeGif() ; 
+            }, 5000);
+            
+        } ;
+
+        function changeGif()
+        {
+
+            let randonNumber = generateRandomNumber() ; 
+            alert(randonNumber) ;
+
+            if ( randonNumber == 1 )
+            {
+                document.getElementById('alpaca-image').src="./images/alpaca.gif";
+            }
+
+            else if ( randonNumber == 2 )
+            {
+                document.getElementById('alpaca-image').src="./images/alpaca_left.gif";
+            }
+
+            else 
+            {
+                document.getElementById('alpaca-image').src="./images/alpaca_right.gif";
+            }
+
+        }
+
+        function generateRandomNumber ()
+        {
+            let difference = 4 - 1 ; 
+            let rand = Math.random() ; 
+            rand = Math.floor( rand * difference);
+            rand = rand + 1;
+
+            return rand;
+        }
+
+        waitTime() ; 
+
+    </script>
+
 </html>

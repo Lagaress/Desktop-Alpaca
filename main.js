@@ -13,16 +13,13 @@ const createWindow = () => {
       }
     })
   
-    mainWindow.loadFile('index.html')
-
-    document.getElementById("body").addEventListener("click", () => {
-      app.BrowserWindow.getFocusedWindow().close();
-    }, false);   
+    mainWindow.loadFile('index.html') ; 
 
   }
-  
+
   app.whenReady().then(() => {
     createWindow()
+    waitTime() ; 
   })
 
   
