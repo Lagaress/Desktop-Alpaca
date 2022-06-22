@@ -18,8 +18,7 @@ const createWindow = () => {
   }
 
   app.whenReady().then(() => {
-    createWindow()
-    waitTime() ; 
+    createWindow();
   })
 
   

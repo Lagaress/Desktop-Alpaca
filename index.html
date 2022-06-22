@@ -7,56 +7,8 @@
     </head>
     <body id="body">
         <div>
-             <img id="alpaca-image" src="./images/alpacaPNG.gif"/>
+             <img id="alpaca-image" src="./animations/alpacaPNG.gif"/>
         </div>
     </body>
-
-    <script>
-
-        function waitTime()
-        {
-           
-            const interval = setInterval(function() {
-                changeGif() ; 
-            }, 3000);
-            
-        } ;
-
-        function changeGif()
-        {
-
-            let randonNumber = generateRandomNumber() ; 
-
-            if ( randonNumber == 1 )
-            {
-                document.getElementById('alpaca-image').src="./images/alpaca.gif";
-            }
-
-            else if ( randonNumber == 2 )
-            {
-                document.getElementById('alpaca-image').src="./images/alpacaPNG.gif";
-            }
-
-            else 
-            {
-                document.getElementById('alpaca-image').src="./images/alpaca_left.gif";
-            }
-
-        }
-
-        function generateRandomNumber ()
-        {
-            let difference = 4 - 1 ; 
-            let rand = Math.random() ; 
-            rand = Math.floor( rand * difference);
-            rand = rand + 1;
-
-            return rand;
-        }
-
-        document.getElementById('alpaca-image').src="./images/alpacaPNG.gif";
-        waitTime() ; 
-
-    </script>
-
+    <script type="text/javascript" src="logic/changueAnimations.js"></script>
 </html>
