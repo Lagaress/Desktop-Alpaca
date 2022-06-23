@@ -1,5 +1,7 @@
 const { app, BrowserWindow , Notification } = require('electron')
 
+//const mainWindow = new BrowserWindow();
+
 const createWindow = () => {
     const mainWindow = new BrowserWindow({
       width: 150,
@@ -21,6 +23,14 @@ const createWindow = () => {
     createWindow();
   })
 
+
+  module.exports = function moveLeftAlpaca()
+  {
+    let [x, y] = mainWindow.getPosition();
+    mainWindow.setPosition(x+5 , y , false) ;
+  }
+
+  document.getElementById('alpaca-image').src="./animations/alpaca.gif";
   
   
   

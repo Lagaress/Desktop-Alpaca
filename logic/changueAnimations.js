@@ -1,3 +1,4 @@
+
 function waitTime()
 {
    
@@ -10,6 +11,8 @@ function waitTime()
 function changeGif()
 {
 
+    let positionX = window.positionX;
+
     let randonNumber = generateRandomNumber() ; 
 
     if ( randonNumber == 1 )
@@ -20,6 +23,7 @@ function changeGif()
     else if ( randonNumber == 2 )
     {
         document.getElementById('alpaca-image').src="./animations/alpacaPNG.gif";
+
     }
 
     else 
