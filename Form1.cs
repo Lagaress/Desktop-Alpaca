@@ -40,6 +40,16 @@ namespace AlpacaDesktop
             Random random = new Random();
             int randomNumber = random.Next(1, 5);
 
+            switch(randomNumber)
+            {
+                case 1: 
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/base.gif");
+                    break;
+                case 2: 
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/forwardLeftJumpAnimation.gif");
+                    break;
+            }
+
             MessageBox.Show(randomNumber.ToString());
         }
 

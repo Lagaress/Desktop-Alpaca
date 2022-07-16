@@ -11,3 +11,15 @@ C:\Users\Zegar\source\repos\AlpacaDesktop\AlpacaDesktop\obj\Debug\AlpacaDesktop.
 C:\Users\Zegar\source\repos\AlpacaDesktop\AlpacaDesktop\obj\Debug\AlpacaDesktop.pdb
 C:\Users\Zegar\source\repos\AlpacaDesktop\AlpacaDesktop\bin\Debug\DragAssembly.dll
 C:\Users\Zegar\source\repos\AlpacaDesktop\AlpacaDesktop\obj\Debug\AlpacaDesktop.csproj.CopyComplete
+C:\Users\Zegar\source\repos\Desktop-Alpaca\obj\Debug\AlpacaDesktop.csproj.AssemblyReference.cache
+C:\Users\Zegar\source\repos\Desktop-Alpaca\obj\Debug\AlpacaDesktop.csproj.SuggestedBindingRedirects.cache
+C:\Users\Zegar\source\repos\Desktop-Alpaca\obj\Debug\AlpacaDesktop.Form1.resources
+C:\Users\Zegar\source\repos\Desktop-Alpaca\obj\Debug\AlpacaDesktop.Properties.Resources.resources
+C:\Users\Zegar\source\repos\Desktop-Alpaca\obj\Debug\AlpacaDesktop.csproj.GenerateResource.cache
+C:\Users\Zegar\source\repos\Desktop-Alpaca\obj\Debug\AlpacaDesktop.csproj.CoreCompileInputs.cache
+C:\Users\Zegar\source\repos\Desktop-Alpaca\obj\Debug\AlpacaDesktop.exe
+C:\Users\Zegar\source\repos\Desktop-Alpaca\obj\Debug\AlpacaDesktop.pdb
+C:\Users\Zegar\source\repos\Desktop-Alpaca\bin\Debug\AlpacaDesktop.exe.config
+C:\Users\Zegar\source\repos\Desktop-Alpaca\bin\Debug\AlpacaDesktop.exe
+C:\Users\Zegar\source\repos\Desktop-Alpaca\bin\Debug\AlpacaDesktop.pdb
+C:\Users\Zegar\source\repos\Desktop-Alpaca\obj\Debug\AlpacaDesktop.csproj.CopyComplete
