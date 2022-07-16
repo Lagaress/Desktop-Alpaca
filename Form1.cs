@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Timers;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,7 +15,7 @@ namespace AlpacaDesktop
     {
         private bool isDraggable = false;
         private Point point = new Point(0, 0);
-        private Timer timer;
+        private System.Windows.Forms.Timer timer;
         public Form1()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace AlpacaDesktop
         }
         private void initTimer()
         {
-            timer = new Timer();
+            timer = new System.Windows.Forms.Timer();
             timer.Tick += new EventHandler(displayRandomNumber);
             timer.Interval = 5000; 
             timer.Start();
@@ -38,7 +39,7 @@ namespace AlpacaDesktop
         private void displayRandomNumber(object sender, EventArgs e)
         {
             Random random = new Random();
-            int randomNumber = random.Next(1, 5);
+            int randomNumber = random.Next(2, 3);
 
             switch(randomNumber)
             {
@@ -47,6 +48,7 @@ namespace AlpacaDesktop
                     break;
                 case 2: 
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/forwardLeftJumpAnimation.gif");
+                    this.Left -= 20; 
                     break;
             }
 
