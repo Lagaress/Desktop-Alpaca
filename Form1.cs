@@ -130,6 +130,14 @@ namespace AlpacaDesktop
             MessageBox.Show("AQUÍ LA ALPACA CAMBIA DE COLOR");
         }
 
+        private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                MessageBox.Show("Clicked with right button");
+            }
+        }
+
         private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
         {
             isDraggable = false;

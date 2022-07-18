@@ -13,3 +13,4 @@ PASAR PROYECTO -> 1H
 Arreglar movimiento derecha 17 min
 Remove background from previous animations -> 3 min
 Basic Logic animations -> 20 min 
+Right button click -> 2 min
