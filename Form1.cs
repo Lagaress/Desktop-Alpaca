@@ -170,10 +170,37 @@ namespace AlpacaDesktop
 
         private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
         {
+            double screenWidth = Screen.PrimaryScreen.Bounds.Width;
+            double screenHeight = Screen.PrimaryScreen.Bounds.Height;
+
             if (isDraggable)
             {
                 Point pointToScreen = PointToScreen(e.Location);
-                Location = new Point(pointToScreen.X - this.point.X, pointToScreen.Y - this.point.Y);
+
+                if (pointToScreen.X - this.point.X > Convert.ToInt32(screenWidth)-130) // right
+                {
+                    Location = new Point(Convert.ToInt32(screenWidth)-130, pointToScreen.Y - this.point.Y);                
+                }
+
+                else if (pointToScreen.X - this.point.X <= 0) // left
+                {
+                    Location = new Point(0, pointToScreen.Y - this.point.Y);                
+                }
+
+                else if(pointToScreen.Y - this.point.Y <= 0) // top
+                {
+                    Location = new Point(pointToScreen.X - this.point.X, 0);                
+                }
+
+                else if(pointToScreen.Y - this.point.Y >= Convert.ToInt32(screenHeight)-160) // bottom
+                {
+                    Location = new Point(pointToScreen.X - this.point.X, Convert.ToInt32(screenHeight)-160);                
+                }
+
+                else // anywhere
+                {
+                    Location = new Point(pointToScreen.X - this.point.X, pointToScreen.Y - this.point.Y);
+                }
             }
         }
     }
