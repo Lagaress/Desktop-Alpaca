@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows;
 
 namespace AlpacaDesktop
 {
@@ -47,8 +48,40 @@ namespace AlpacaDesktop
 
         private void rightMovement(object sender, EventArgs e)
         {
-            this.Left -= 10;
+
+            if (this.Left > 0)
+            {
+                this.Left -= 10;
+            }
+            else
+            {
+                displayRandomNumber(sender, e);
+            }
         }
+
+        private void initTimerLeftMovement()
+        {
+            secondaryTimer = new System.Windows.Forms.Timer();
+            secondaryTimer.Tick += new EventHandler(leftMovement);
+            secondaryTimer.Interval = 300; 
+            secondaryTimer.Start();
+        }
+
+        private void leftMovement(object sender, EventArgs e)
+        {
+
+            double screenWidth = Screen.PrimaryScreen.Bounds.Width;
+
+            if (this.Left + 200 < screenWidth)
+            {
+                this.Left += 10;
+            }
+            else
+            {
+                displayRandomNumber(sender, e);
+            }
+        }
+
 
         private void initTimerShortJumpMovement()
         {
@@ -60,7 +93,7 @@ namespace AlpacaDesktop
 
         private void shortJumpMovement(object sender, EventArgs e)
         {
-            this.Top -= 10
+            this.Top -= 10;
             this.Top += 10;
         }
 
@@ -103,6 +136,10 @@ namespace AlpacaDesktop
                 case 4: //short queue jump
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpQueueAnimation.gif");
                     initTimerShortQueueJumpMovement();
+                    break;
+                case 5: //left movement
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/leftMovement.gif");
+                    initTimerLeftMovement();
                     break;
             }
         }
