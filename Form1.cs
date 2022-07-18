@@ -33,7 +33,7 @@ namespace AlpacaDesktop
         {
             timer = new System.Windows.Forms.Timer();
             timer.Tick += new EventHandler(displayRandomNumber);
-            timer.Interval = 5000; 
+            timer.Interval = 3000; 
             timer.Start();
         }
 
@@ -41,7 +41,7 @@ namespace AlpacaDesktop
         {
             secondaryTimer = new System.Windows.Forms.Timer();
             secondaryTimer.Tick += new EventHandler(rightMovement);
-            secondaryTimer.Interval = 500; 
+            secondaryTimer.Interval = 300; 
             secondaryTimer.Start();
         }
 
@@ -54,13 +54,13 @@ namespace AlpacaDesktop
         {
             secondaryTimer = new System.Windows.Forms.Timer();
             secondaryTimer.Tick += new EventHandler(shortJumpMovement);
-            secondaryTimer.Interval = 500; 
+            secondaryTimer.Interval = 300; 
             secondaryTimer.Start();
         }
 
         private void shortJumpMovement(object sender, EventArgs e)
         {
-            this.Top -= 10;
+            this.Top -= 10
             this.Top += 10;
         }
 
@@ -68,7 +68,7 @@ namespace AlpacaDesktop
         {
             secondaryTimer = new System.Windows.Forms.Timer();
             secondaryTimer.Tick += new EventHandler(shortQueueJumpMovement);
-            secondaryTimer.Interval = 500; 
+            secondaryTimer.Interval = 300; 
             secondaryTimer.Start();
         }
 
@@ -76,20 +76,6 @@ namespace AlpacaDesktop
         {
             this.Top -= 10;
             this.Top += 10;
-        }
-
-        private void initTimerBigJumpMovement()
-        {
-            secondaryTimer = new System.Windows.Forms.Timer();
-            secondaryTimer.Tick += new EventHandler(bigJumpMovement);
-            secondaryTimer.Interval = 500; 
-            secondaryTimer.Start();
-        }
-
-        private void bigJumpMovement(object sender, EventArgs e)
-        {
-            this.Top -= 25;
-            this.Top += 25;
         }
 
         private void displayRandomNumber(object sender, EventArgs e)
@@ -114,11 +100,7 @@ namespace AlpacaDesktop
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpAnimation.gif");
                     initTimerShortJumpMovement();
                     break;
-                case 4: //big jump
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/largeJumpAnimation.gif");
-                    initTimerBigJumpMovement();
-                    break;
-                case 5: //short queue jump
+                case 4: //short queue jump
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpQueueAnimation.gif");
                     initTimerShortQueueJumpMovement();
                     break;

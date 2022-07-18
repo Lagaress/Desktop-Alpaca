@@ -8,7 +8,7 @@ Animación de andar -> 1h
 
 PASAR PROYECTO A C#
 -----------------------
-PASAR PROYECTO -> 1H 
+PASAR PROYECTO -> 3H 
 
 Arreglar movimiento derecha 17 min
 Remove background from previous animations -> 3 min
