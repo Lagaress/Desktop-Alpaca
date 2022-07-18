@@ -40,20 +40,62 @@ namespace AlpacaDesktop
         private void initTimerOneSecond()
         {
             secondaryTimer = new System.Windows.Forms.Timer();
-            secondaryTimer.Tick += new EventHandler(displayMessage);
+            secondaryTimer.Tick += new EventHandler(rightMovement);
             secondaryTimer.Interval = 500; 
             secondaryTimer.Start();
         }
 
-        private void displayMessage(object sender, EventArgs e)
+        private void rightMovement(object sender, EventArgs e)
         {
             this.Left -= 10;
+        }
+
+        private void initTimerShortJumpMovement()
+        {
+            secondaryTimer = new System.Windows.Forms.Timer();
+            secondaryTimer.Tick += new EventHandler(shortJumpMovement);
+            secondaryTimer.Interval = 500; 
+            secondaryTimer.Start();
+        }
+
+        private void shortJumpMovement(object sender, EventArgs e)
+        {
+            this.Top -= 10;
+            this.Top += 10;
+        }
+
+        private void initTimerShortQueueJumpMovement()
+        {
+            secondaryTimer = new System.Windows.Forms.Timer();
+            secondaryTimer.Tick += new EventHandler(shortQueueJumpMovement);
+            secondaryTimer.Interval = 500; 
+            secondaryTimer.Start();
+        }
+
+        private void shortQueueJumpMovement(object sender, EventArgs e)
+        {
+            this.Top -= 10;
+            this.Top += 10;
+        }
+
+        private void initTimerBigJumpMovement()
+        {
+            secondaryTimer = new System.Windows.Forms.Timer();
+            secondaryTimer.Tick += new EventHandler(bigJumpMovement);
+            secondaryTimer.Interval = 500; 
+            secondaryTimer.Start();
+        }
+
+        private void bigJumpMovement(object sender, EventArgs e)
+        {
+            this.Top -= 25;
+            this.Top += 25;
         }
 
         private void displayRandomNumber(object sender, EventArgs e)
         {
             Random random = new Random();
-            int randomNumber = random.Next(1, 3);
+            int randomNumber = random.Next(1, 6);
             if (secondaryTimer != null)
             {
                 secondaryTimer.Stop();
@@ -61,22 +103,33 @@ namespace AlpacaDesktop
 
             switch(randomNumber)
             {
-                case 1: 
+                case 1: //base
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/base.gif");
                     break;
-                case 2: 
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/forwardLeftJumpAnimation.gif");
+                case 2: //rightMovement
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/rightMovement.gif");
                     initTimerOneSecond();
                     break;
+                case 3: //short jump
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpAnimation.gif");
+                    initTimerShortJumpMovement();
+                    break;
+                case 4: //big jump
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/largeJumpAnimation.gif");
+                    initTimerBigJumpMovement();
+                    break;
+                case 5: //short queue jump
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpQueueAnimation.gif");
+                    initTimerShortQueueJumpMovement();
+                    break;
             }
-
-            MessageBox.Show(randomNumber.ToString());
         }
 
         private void pictureBox2_DoubleClick(object sender, EventArgs e)
         {
             MessageBox.Show("AQUÍ LA ALPACA CAMBIA DE COLOR");
         }
+
         private void pictureBox2_MouseUp(object sender, MouseEventArgs e)
         {
             isDraggable = false;

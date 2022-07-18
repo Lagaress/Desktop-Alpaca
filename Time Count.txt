@@ -1,5 +1,15 @@
+ELECTRON
+----------
 Tareas hasta que empecé a contar el tiempo +- unas 3 h
 Desarrollo del priemr boceto pixel art -> 30 min
 Crear animación de la alpaca (5 frames) -> 1h
 Crear animaciones (salto corto, largo, con cola y hacia delante) -> !5 min
 Animación de andar -> 1h
+
+PASAR PROYECTO A C#
+-----------------------
+PASAR PROYECTO -> 1H 
+
+Arreglar movimiento derecha 17 min
+Remove background from previous animations -> 3 min
+Basic Logic animations -> 20 min 
