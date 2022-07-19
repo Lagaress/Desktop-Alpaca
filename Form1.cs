@@ -16,6 +16,7 @@ namespace AlpacaDesktop
     {
         private bool isDraggable = false;
         private Point point = new Point(0, 0);
+        PictureBox newPic = new PictureBox();
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Timer secondaryTimer;
         public Form1()
@@ -135,6 +136,12 @@ namespace AlpacaDesktop
                     break;
                 case 4: //short queue jump
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpQueueAnimation.gif");
+                    newPic.Height = 60; 
+                    newPic.Width = 100; 
+                    newPic.Image = Image.FromFile("C:/Users/Zegar/Downloads/caca.png");
+                    newPic.Location = new Point(100, 100);
+                    this.Controls.Add(newPic);
+
                     initTimerShortQueueJumpMovement();
                     break;
                 case 5: //left movement
@@ -146,7 +153,7 @@ namespace AlpacaDesktop
 
         private void pictureBox2_DoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show("AQUÍ LA ALPACA CAMBIA DE COLOR");
+            this.Controls.Remove(newPic);
         }
 
         private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
