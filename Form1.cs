@@ -115,7 +115,7 @@ namespace AlpacaDesktop
         private void displayRandomNumber(object sender, EventArgs e)
         {
             Random random = new Random();
-            int randomNumber = random.Next(1, 6);
+            int randomNumber = random.Next(1, 8);
             if (secondaryTimer != null)
             {
                 secondaryTimer.Stop();
@@ -126,33 +126,45 @@ namespace AlpacaDesktop
                 case 1: //base
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/base.gif");
                     break;
+                case 1: //base left
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/baseLeft.gif");
+                    break;
                 case 2: //rightMovement
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/rightMovement.gif");
                     initTimerOneSecond();
                     break;
-                case 3: //short jump
+                case 3: //leftMovement
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/leftMovement.gif");
+                    initTimerLeftMovement();
+                    break;
+                case 4: //short jump
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpAnimation.gif");
                     initTimerShortJumpMovement();
                     break;
-                case 4: //short queue jump
+                case 5: //short jump left
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpAnimationLeft.gif");
+                    initTimerShortJumpMovement();
+                    break;
+                case 6: //short queue jump
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpQueueAnimation.gif");
                     newPic.Height = 60; 
                     newPic.Width = 100; 
                     newPic.Image = Image.FromFile("C:/Users/Zegar/Downloads/caca.png");
                     newPic.Location = new Point(100, 100);
                     this.Controls.Add(newPic);
-
                     initTimerShortQueueJumpMovement();
                     break;
-                case 5: //left movement
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/leftMovement.gif");
-                    initTimerLeftMovement();
+                case 7: //short queue jump left
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpQueueAnimationLeft.gif");
+                    initTimerShortQueueJumpMovement();
                     break;
+
             }
         }
 
         private void pictureBox2_DoubleClick(object sender, EventArgs e)
         {
+            MessageBox.Show("Poop cleaned");
             this.Controls.Remove(newPic);
         }
 

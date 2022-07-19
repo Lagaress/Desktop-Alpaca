@@ -18,3 +18,4 @@ Right Movement added -> 20 min
 Hacer que con el movimiento izquierda y derecha no se salga de la pantalla principal -> 17 min
 Conseguir que no se pueda salir de la pantalla con el dragggable -> 20 min
 Hacer que haga caca y se pueda limpiar -> 33 min
+Voltear animaciones y añadirlo -> 5 min
