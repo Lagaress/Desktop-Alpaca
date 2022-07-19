@@ -19,3 +19,4 @@ Hacer que con el movimiento izquierda y derecha no se salga de la pantalla princ
 Conseguir que no se pueda salir de la pantalla con el dragggable -> 20 min
 Hacer que haga caca y se pueda limpiar -> 33 min
 Voltear animaciones y añadirlo -> 5 min
+Se elimina la mierda si haces doble click en ella -> 36 min

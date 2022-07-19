@@ -17,6 +17,8 @@ namespace AlpacaDesktop
         private bool isDraggable = false;
         private Point point = new Point(0, 0);
         PictureBox newPic = new PictureBox();
+        Form newForm = new Form();
+
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Timer secondaryTimer;
         public Form1()
@@ -115,7 +117,7 @@ namespace AlpacaDesktop
         private void displayRandomNumber(object sender, EventArgs e)
         {
             Random random = new Random();
-            int randomNumber = random.Next(1, 8);
+            int randomNumber = random.Next(1, 9);
             if (secondaryTimer != null)
             {
                 secondaryTimer.Stop();
@@ -126,35 +128,30 @@ namespace AlpacaDesktop
                 case 1: //base
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/base.gif");
                     break;
-                case 1: //base left
+                case 2: //base left
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/baseLeft.gif");
                     break;
-                case 2: //rightMovement
+                case 3: //rightMovement
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/rightMovement.gif");
                     initTimerOneSecond();
                     break;
-                case 3: //leftMovement
+                case 4: //leftMovement
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/leftMovement.gif");
                     initTimerLeftMovement();
                     break;
-                case 4: //short jump
+                case 5: //short jump
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpAnimation.gif");
                     initTimerShortJumpMovement();
                     break;
-                case 5: //short jump left
+                case 6: //short jump left
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpAnimationLeft.gif");
                     initTimerShortJumpMovement();
                     break;
-                case 6: //short queue jump
+                case 7: //short queue jump
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpQueueAnimation.gif");
-                    newPic.Height = 60; 
-                    newPic.Width = 100; 
-                    newPic.Image = Image.FromFile("C:/Users/Zegar/Downloads/caca.png");
-                    newPic.Location = new Point(100, 100);
-                    this.Controls.Add(newPic);
                     initTimerShortQueueJumpMovement();
                     break;
-                case 7: //short queue jump left
+                case 8: //short queue jump left
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpQueueAnimationLeft.gif");
                     initTimerShortQueueJumpMovement();
                     break;
@@ -164,15 +161,31 @@ namespace AlpacaDesktop
 
         private void pictureBox2_DoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show("Poop cleaned");
-            this.Controls.Remove(newPic);
+            MessageBox.Show("Some funcionality here");
+        }
+
+        private void newForm_MouseClick(object sender, EventArgs e)
+        {
+            newForm.Hide();
         }
 
         private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
-                MessageBox.Show("Clicked with right button");
+                newForm.BackColor = Color.LimeGreen;
+                newForm.TransparencyKey = Color.LimeGreen;
+                newForm.TopMost = true;
+                newForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                newForm.Location = new Point(this.DesktopLocation.X + 25 , this.DesktopLocation.Y + 15);
+
+                newPic.Height = 60; 
+                newPic.Width = 100; 
+                newPic.Image = Image.FromFile("C:/Users/Zegar/Downloads/caca.png");
+                newPic.Location = new Point(100, 100);
+                newForm.Controls.Add(newPic);
+
+                newForm.Show();
             }
         }
 
