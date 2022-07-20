@@ -118,41 +118,47 @@ namespace AlpacaDesktop
         private void displayRandomNumber(object sender, EventArgs e)
         {
             Random random = new Random();
-            int randomNumber = random.Next(1, 2);
+            int randomNumber = random.Next(1, 3);
+            string side = "Left"; 
             if (secondaryTimer != null)
             {
                 secondaryTimer.Stop();
             }
 
-            // TO - DO: A LA HORA DE HACER EL REFACTOR AQUÍ, HACER QUE PRIMERO SE ELIJA EL LADO (SWITCH 2) Y DE ÁHÍ LA ANIMACIÓN CON SU COLOR
+            switch (randomNumber) // Choose side
+            {
+                case 1: 
+                    side = "Left";
+                    break; 
+                case 2: 
+                    side = "Right";
+                    break;
+            }
 
-            switch(randomNumber)
+            randomNumber = random.Next(1, 5);
+
+            switch(randomNumber) // Choose animation
             {
                 case 1: //base
-                    MessageBox.Show("You're here");
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"/base.gif");
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/base.gif");
                     break;
-                case 2: //base left
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"baseLeft.gif");
+                case 2: //movement
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/movement.gif");
+                    if (side == "Left")
+                    {
+                        initTimerOneSecond();
+                    }
+                    else
+                    {
+                        initTimerLeftMovement();
+                    }
                     break;
-                case 3: //rightMovement
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"rightMovement.gif");
-                    initTimerOneSecond();
-                    break;
-                case 4: //leftMovement
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"leftMovement.gif");
-                    initTimerLeftMovement();
-                    break;
-                case 5: //short jump
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"shortJumpAnimation.gif");
+                case 3: //short jump
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/shortJump.gif");
                     initTimerShortJumpMovement();
                     break;
-                case 6: //short jump left
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"shortJumpAnimationLeft.gif");
-                    initTimerShortJumpMovement();
-                    break;
-                case 7: //short queue jump & poop
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"shortJumpQueueAnimation.gif");
+                case 4: //short queue jump & poop
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/shortJumpQueue.gif");
                     
                     newForm.BackColor = Color.LimeGreen;
                     newForm.TransparencyKey = Color.LimeGreen;
@@ -171,11 +177,6 @@ namespace AlpacaDesktop
 
                     initTimerShortQueueJumpMovement();
                     break;
-                case 8: //short queue jump left
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"shortJumpQueueAnimationLeft.gif");
-                    initTimerShortQueueJumpMovement();
-                    break;
-
             }
         }
 
