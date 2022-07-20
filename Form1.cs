@@ -18,6 +18,7 @@ namespace AlpacaDesktop
         private Point point = new Point(0, 0);
         PictureBox newPic = new PictureBox();
         Form newForm = new Form();
+        string color = "Pink";
 
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Timer secondaryTimer;
@@ -117,42 +118,61 @@ namespace AlpacaDesktop
         private void displayRandomNumber(object sender, EventArgs e)
         {
             Random random = new Random();
-            int randomNumber = random.Next(1, 9);
+            int randomNumber = random.Next(1, 2);
             if (secondaryTimer != null)
             {
                 secondaryTimer.Stop();
             }
 
+            // TO - DO: A LA HORA DE HACER EL REFACTOR AQUÍ, HACER QUE PRIMERO SE ELIJA EL LADO (SWITCH 2) Y DE ÁHÍ LA ANIMACIÓN CON SU COLOR
+
             switch(randomNumber)
             {
                 case 1: //base
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/base.gif");
+                    MessageBox.Show("You're here");
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"/base.gif");
                     break;
                 case 2: //base left
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/baseLeft.gif");
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"baseLeft.gif");
                     break;
                 case 3: //rightMovement
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/rightMovement.gif");
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"rightMovement.gif");
                     initTimerOneSecond();
                     break;
                 case 4: //leftMovement
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/leftMovement.gif");
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"leftMovement.gif");
                     initTimerLeftMovement();
                     break;
                 case 5: //short jump
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpAnimation.gif");
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"shortJumpAnimation.gif");
                     initTimerShortJumpMovement();
                     break;
                 case 6: //short jump left
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpAnimationLeft.gif");
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"shortJumpAnimationLeft.gif");
                     initTimerShortJumpMovement();
                     break;
-                case 7: //short queue jump
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpQueueAnimation.gif");
+                case 7: //short queue jump & poop
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"shortJumpQueueAnimation.gif");
+                    
+                    newForm.BackColor = Color.LimeGreen;
+                    newForm.TransparencyKey = Color.LimeGreen;
+                    newForm.TopMost = true;
+                    newForm.Location = new Point(this.DesktopLocation.X + 25 , this.DesktopLocation.Y + 15);
+                    newForm.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+                    newForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+
+                    newPic.Height = 60; 
+                    newPic.Width = 100; 
+                    newPic.Image = Image.FromFile("C:/Users/Zegar/Downloads/caca.png");
+                    newPic.Location = new Point(100, 100);
+                    newForm.Controls.Add(newPic);
+
+                    newForm.Show();
+
                     initTimerShortQueueJumpMovement();
                     break;
                 case 8: //short queue jump left
-                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/shortJumpQueueAnimationLeft.gif");
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+color+"shortJumpQueueAnimationLeft.gif");
                     initTimerShortQueueJumpMovement();
                     break;
 
@@ -161,7 +181,7 @@ namespace AlpacaDesktop
 
         private void pictureBox2_DoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show("Some funcionality here");
+            MessageBox.Show("CEPILLADO DE LA ALPACA") ;
         }
 
         private void newForm_MouseClick(object sender, EventArgs e)
@@ -173,22 +193,8 @@ namespace AlpacaDesktop
         {
             if (e.Button == MouseButtons.Right)
             {
-                newForm.BackColor = Color.LimeGreen;
-                newForm.TransparencyKey = Color.LimeGreen;
-                newForm.TopMost = true;
-                newForm.Location = new Point(this.DesktopLocation.X + 25 , this.DesktopLocation.Y + 15);
-                newForm.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-                newForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-                // TO - DO: Tengo que arreglar el StartPosition y se arregla
-                // TO DO - CAMBIAR EL COLOR DE LOS GIF
-
-                newPic.Height = 60; 
-                newPic.Width = 100; 
-                newPic.Image = Image.FromFile("C:/Users/Zegar/Downloads/caca.png");
-                newPic.Location = new Point(100, 100);
-                newForm.Controls.Add(newPic);
-
-                newForm.Show();
+                // TO - DO: Añadir animación para que la alpaca cambie de color (se le cae un bote de pintura). 
+                color = "Blue";
             }
         }
 
