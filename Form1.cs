@@ -176,8 +176,11 @@ namespace AlpacaDesktop
                 newForm.BackColor = Color.LimeGreen;
                 newForm.TransparencyKey = Color.LimeGreen;
                 newForm.TopMost = true;
-                newForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                 newForm.Location = new Point(this.DesktopLocation.X + 25 , this.DesktopLocation.Y + 15);
+                newForm.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+                newForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                // TO - DO: Tengo que arreglar el StartPosition y se arregla
+                // TO DO - CAMBIAR EL COLOR DE LOS GIF
 
                 newPic.Height = 60; 
                 newPic.Width = 100; 
