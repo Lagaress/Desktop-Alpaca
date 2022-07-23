@@ -22,3 +22,8 @@ Voltear animaciones y añadirlo -> 5 min
 Se elimina la mierda si haces doble click en ella -> 36 min
 Arreglado el bug de que la caca aaprezca en una posición random la 1º vez que se invoca -> 5 min
 Basic Color Change with right click -> 10 min 
+Refactor del switch para que haya diferencia de color y lado (40 min)
+Poop animation -> 17 min
+Poop animation implementation -> 10 min
+Transformation blue animation design -> 20 min 
+Change color animation implementation -> 20 min

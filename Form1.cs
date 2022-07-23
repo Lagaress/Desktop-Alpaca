@@ -19,9 +19,11 @@ namespace AlpacaDesktop
         PictureBox newPic = new PictureBox();
         Form newForm = new Form();
         string color = "Pink";
+        string side = "Left"; 
 
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Timer secondaryTimer;
+        private System.Windows.Forms.Timer thirdTimer;
         public Form1()
         {
             InitializeComponent();
@@ -38,7 +40,7 @@ namespace AlpacaDesktop
         {
             timer = new System.Windows.Forms.Timer();
             timer.Tick += new EventHandler(displayRandomNumber);
-            timer.Interval = 3000; 
+            timer.Interval = 2000; 
             timer.Start();
         }
 
@@ -119,7 +121,6 @@ namespace AlpacaDesktop
         {
             Random random = new Random();
             int randomNumber = random.Next(1, 3);
-            string side = "Left"; 
             if (secondaryTimer != null)
             {
                 secondaryTimer.Stop();
@@ -135,7 +136,7 @@ namespace AlpacaDesktop
                     break;
             }
 
-            randomNumber = random.Next(1, 5);
+            randomNumber = random.Next(1, 2);
 
             switch(randomNumber) // Choose animation
             {
@@ -163,13 +164,13 @@ namespace AlpacaDesktop
                     newForm.BackColor = Color.LimeGreen;
                     newForm.TransparencyKey = Color.LimeGreen;
                     newForm.TopMost = true;
-                    newForm.Location = new Point(this.DesktopLocation.X + 25 , this.DesktopLocation.Y + 15);
+                    newForm.Location = new Point(this.DesktopLocation.X + 25 , this.DesktopLocation.Y - 35);
                     newForm.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
                     newForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 
-                    newPic.Height = 60; 
+                    newPic.Height = 100; 
                     newPic.Width = 100; 
-                    newPic.Image = Image.FromFile("C:/Users/Zegar/Downloads/caca.png");
+                    newPic.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/poop.gif");
                     newPic.Location = new Point(100, 100);
                     newForm.Controls.Add(newPic);
 
@@ -192,10 +193,11 @@ namespace AlpacaDesktop
 
         private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
         {
+            bool flag = false ; 
             if (e.Button == MouseButtons.Right)
             {
-                // TO - DO: Añadir animación para que la alpaca cambie de color (se le cae un bote de pintura). 
                 color = "Blue";
+                pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/transformation.gif");
             }
         }
 
