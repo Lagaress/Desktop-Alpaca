@@ -27,3 +27,8 @@ Poop animation -> 17 min
 Poop animation implementation -> 10 min
 Transformation blue animation design -> 20 min 
 Change color animation implementation -> 20 min
+
+Creación de la animación de cepillado -> 23 min
+Creación de la animación del pedo -> 10 min
+
+Implementación de la animación de cagar -> 5 min

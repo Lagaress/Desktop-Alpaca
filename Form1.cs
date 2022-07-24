@@ -136,7 +136,7 @@ namespace AlpacaDesktop
                     break;
             }
 
-            randomNumber = random.Next(1, 2);
+            randomNumber = random.Next(1, 6);
 
             switch(randomNumber) // Choose animation
             {
@@ -160,11 +160,22 @@ namespace AlpacaDesktop
                     break;
                 case 4: //short queue jump & poop
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/shortJumpQueue.gif");
+                    initTimerShortQueueJumpMovement();
+                    break;
+                case 5: //short queue jump & poop
+                    pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/pedo.gif");
                     
                     newForm.BackColor = Color.LimeGreen;
                     newForm.TransparencyKey = Color.LimeGreen;
                     newForm.TopMost = true;
-                    newForm.Location = new Point(this.DesktopLocation.X + 25 , this.DesktopLocation.Y - 35);
+                    if (side == "Left")
+                    {
+                        newForm.Location = new Point(this.DesktopLocation.X + 25 , this.DesktopLocation.Y - 43);
+                    }
+                    else
+                    {
+                        newForm.Location = new Point(this.DesktopLocation.X - 175 , this.DesktopLocation.Y - 43);
+                    }
                     newForm.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
                     newForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
 
@@ -176,14 +187,15 @@ namespace AlpacaDesktop
 
                     newForm.Show();
 
-                    initTimerShortQueueJumpMovement();
+//                    initTimerShortQueueJumpMovement();
                     break;
+
             }
         }
 
         private void pictureBox2_DoubleClick(object sender, EventArgs e)
         {
-            MessageBox.Show("CEPILLADO DE LA ALPACA") ;
+            pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/cepillado.gif");
         }
 
         private void newForm_MouseClick(object sender, EventArgs e)
