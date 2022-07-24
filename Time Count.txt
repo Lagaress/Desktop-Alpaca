@@ -32,3 +32,4 @@ Creación de la animación de cepillado -> 23 min
 Creación de la animación del pedo -> 10 min
 
 Implementación de la animación de cagar -> 5 min
+Un poco de refactor -> 26 min

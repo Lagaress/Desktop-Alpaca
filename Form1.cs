@@ -14,16 +14,18 @@ namespace AlpacaDesktop
 {
     public partial class Form1 : Form
     {
+        private string side = "Left", color = "Pink";
+        private double screenWidth = Screen.PrimaryScreen.Bounds.Width;
+        private double screenHeight = Screen.PrimaryScreen.Bounds.Height;
         private bool isDraggable = false;
         private Point point = new Point(0, 0);
-        PictureBox newPic = new PictureBox();
-        Form newForm = new Form();
-        string color = "Pink";
-        string side = "Left"; 
-
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Timer secondaryTimer;
-        private System.Windows.Forms.Timer thirdTimer;
+        
+        Random random = new Random();
+        PictureBox newPic = new PictureBox();
+        Form newForm = new Form();
+
         public Form1()
         {
             InitializeComponent();
@@ -34,17 +36,17 @@ namespace AlpacaDesktop
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            initTimer();
+            mainTimer();
         }
-        private void initTimer()
+        private void mainTimer()
         {
             timer = new System.Windows.Forms.Timer();
-            timer.Tick += new EventHandler(displayRandomNumber);
+            timer.Tick += new EventHandler(displayRandomAnimation);
             timer.Interval = 2000; 
             timer.Start();
         }
 
-        private void initTimerOneSecond()
+        private void animationTimer()
         {
             secondaryTimer = new System.Windows.Forms.Timer();
             secondaryTimer.Tick += new EventHandler(rightMovement);
@@ -61,7 +63,7 @@ namespace AlpacaDesktop
             }
             else
             {
-                displayRandomNumber(sender, e);
+                displayRandomAnimation(sender, e);
             }
         }
 
@@ -76,7 +78,6 @@ namespace AlpacaDesktop
         private void leftMovement(object sender, EventArgs e)
         {
 
-            double screenWidth = Screen.PrimaryScreen.Bounds.Width;
 
             if (this.Left + 200 < screenWidth)
             {
@@ -84,49 +85,51 @@ namespace AlpacaDesktop
             }
             else
             {
-                displayRandomNumber(sender, e);
+                displayRandomAnimation(sender, e);
             }
         }
 
 
-        private void initTimerShortJumpMovement()
+        private void shortJumpTimer()
         {
             secondaryTimer = new System.Windows.Forms.Timer();
-            secondaryTimer.Tick += new EventHandler(shortJumpMovement);
+            secondaryTimer.Tick += new EventHandler(shortJump);
             secondaryTimer.Interval = 300; 
             secondaryTimer.Start();
         }
 
-        private void shortJumpMovement(object sender, EventArgs e)
+        private void shortJump(object sender, EventArgs e)
         {
             this.Top -= 10;
             this.Top += 10;
         }
 
-        private void initTimerShortQueueJumpMovement()
+        private void shortQueueJumpTimer()
         {
             secondaryTimer = new System.Windows.Forms.Timer();
-            secondaryTimer.Tick += new EventHandler(shortQueueJumpMovement);
+            secondaryTimer.Tick += new EventHandler(shortQueueJump);
             secondaryTimer.Interval = 300; 
             secondaryTimer.Start();
         }
 
-        private void shortQueueJumpMovement(object sender, EventArgs e)
+        private void shortQueueJump(object sender, EventArgs e)
         {
             this.Top -= 10;
             this.Top += 10;
         }
 
-        private void displayRandomNumber(object sender, EventArgs e)
+        private void displayRandomAnimation(object sender, EventArgs e)
         {
-            Random random = new Random();
+            stopAnimationTimer();
+            generateRandomSide();
+            generateRandomAnimation();
+            
+        }
+
+        private void generateRandomSide()
+        {
             int randomNumber = random.Next(1, 3);
-            if (secondaryTimer != null)
-            {
-                secondaryTimer.Stop();
-            }
-
-            switch (randomNumber) // Choose side
+            switch (randomNumber) 
             {
                 case 1: 
                     side = "Left";
@@ -135,63 +138,96 @@ namespace AlpacaDesktop
                     side = "Right";
                     break;
             }
+        }
 
-            randomNumber = random.Next(1, 6);
+        private void stopAnimationTimer()
+        {
+            if (secondaryTimer != null)
+            {
+                secondaryTimer.Stop();
+            }
+        }
 
-            switch(randomNumber) // Choose animation
+        private void generateRandomAnimation()
+        {
+            int randomNumber = random.Next(1, 6);
+
+            switch(randomNumber)
             {
                 case 1: //base
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/base.gif");
                     break;
                 case 2: //movement
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/movement.gif");
-                    if (side == "Left")
-                    {
-                        initTimerOneSecond();
-                    }
-                    else
-                    {
-                        initTimerLeftMovement();
-                    }
+                    chooseMovementDependingSide();
                     break;
                 case 3: //short jump
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/shortJump.gif");
-                    initTimerShortJumpMovement();
+                    shortJumpTimer();
                     break;
-                case 4: //short queue jump & poop
+                case 4: //short queue jump
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/shortJumpQueue.gif");
-                    initTimerShortQueueJumpMovement();
+                    shortQueueJumpTimer();
                     break;
-                case 5: //short queue jump & poop
+                case 5: //poop
                     pictureBox2.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/"+side+"/"+color+"/pedo.gif");
-                    
-                    newForm.BackColor = Color.LimeGreen;
-                    newForm.TransparencyKey = Color.LimeGreen;
-                    newForm.TopMost = true;
-                    if (side == "Left")
-                    {
-                        newForm.Location = new Point(this.DesktopLocation.X + 25 , this.DesktopLocation.Y - 43);
-                    }
-                    else
-                    {
-                        newForm.Location = new Point(this.DesktopLocation.X - 175 , this.DesktopLocation.Y - 43);
-                    }
-                    newForm.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-                    newForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-
-                    newPic.Height = 100; 
-                    newPic.Width = 100; 
-                    newPic.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/poop.gif");
-                    newPic.Location = new Point(100, 100);
-                    newForm.Controls.Add(newPic);
-
-                    newForm.Show();
-
-//                    initTimerShortQueueJumpMovement();
+                    generatePop();
                     break;
-
             }
         }
+
+        private void chooseMovementDependingSide()
+        {
+            if (side == "Left")
+            {
+                animationTimer();
+            }
+            else
+            {
+                initTimerLeftMovement();
+            }
+        }
+
+        private void generatePop()
+        {
+            createPopForm();
+            createPopPictureBox();
+            newForm.Show();
+        }
+
+        private void createPopForm()
+        {
+            newForm.BackColor = Color.LimeGreen;
+            newForm.TransparencyKey = Color.LimeGreen;
+            newForm.TopMost = true;
+            setLocationDependingSide();
+            newForm.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            newForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+        }
+
+        private void setLocationDependingSide()
+        {
+            if (side == "Left")
+            {
+                newForm.Location = new Point(this.DesktopLocation.X + 25 , this.DesktopLocation.Y - 43);
+            }
+            else
+            {
+                newForm.Location = new Point(this.DesktopLocation.X - 175 , this.DesktopLocation.Y - 43);
+            }
+        }
+
+        private void createPopPictureBox()
+        {
+            newPic.Height = 100; 
+            newPic.Width = 100; 
+            newPic.Image = Image.FromFile("C:/Users/Zegar/source/repos/Desktop-Alpaca/Properties/Animations/poop.gif");
+            newPic.Location = new Point(100, 100);
+            newForm.Controls.Add(newPic);
+        }
+
+
+
 
         private void pictureBox2_DoubleClick(object sender, EventArgs e)
         {
@@ -205,7 +241,6 @@ namespace AlpacaDesktop
 
         private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
         {
-            bool flag = false ; 
             if (e.Button == MouseButtons.Right)
             {
                 color = "Blue";
@@ -226,37 +261,39 @@ namespace AlpacaDesktop
 
         private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
         {
-            double screenWidth = Screen.PrimaryScreen.Bounds.Width;
-            double screenHeight = Screen.PrimaryScreen.Bounds.Height;
-
             if (isDraggable)
             {
-                Point pointToScreen = PointToScreen(e.Location);
+                setLocationDependingCursor(e);
+            }
+        }
 
-                if (pointToScreen.X - this.point.X > Convert.ToInt32(screenWidth)-130) // right
-                {
-                    Location = new Point(Convert.ToInt32(screenWidth)-130, pointToScreen.Y - this.point.Y);                
-                }
+        private void setLocationDependingCursor(MouseEventArgs e)
+        {
+            Point pointToScreen = PointToScreen(e.Location);
 
-                else if (pointToScreen.X - this.point.X <= 0) // left
-                {
-                    Location = new Point(0, pointToScreen.Y - this.point.Y);                
-                }
+            if (pointToScreen.X - this.point.X > Convert.ToInt32(screenWidth)-130) // right
+            {
+                Location = new Point(Convert.ToInt32(screenWidth)-130, pointToScreen.Y - this.point.Y);                
+            }
 
-                else if(pointToScreen.Y - this.point.Y <= 0) // top
-                {
-                    Location = new Point(pointToScreen.X - this.point.X, 0);                
-                }
+            else if (pointToScreen.X - this.point.X <= 0) // left
+            {
+                Location = new Point(0, pointToScreen.Y - this.point.Y);                
+            }
 
-                else if(pointToScreen.Y - this.point.Y >= Convert.ToInt32(screenHeight)-160) // bottom
-                {
-                    Location = new Point(pointToScreen.X - this.point.X, Convert.ToInt32(screenHeight)-160);                
-                }
+            else if(pointToScreen.Y - this.point.Y <= 0) // top
+            {
+                Location = new Point(pointToScreen.X - this.point.X, 0);                
+            }
 
-                else // anywhere
-                {
-                    Location = new Point(pointToScreen.X - this.point.X, pointToScreen.Y - this.point.Y);
-                }
+            else if(pointToScreen.Y - this.point.Y >= Convert.ToInt32(screenHeight)-160) // bottom
+            {
+                Location = new Point(pointToScreen.X - this.point.X, Convert.ToInt32(screenHeight)-160);                
+            }
+
+            else // anywhere
+            {
+                Location = new Point(pointToScreen.X - this.point.X, pointToScreen.Y - this.point.Y);
             }
         }
     }
